@@ -10,6 +10,7 @@ import { useSEO } from "@/composables/useSEO";
 import { usePageTranslation } from "@/i18n";
 import { useBreakpoint } from "@/composables/useBreakpoints";
 import { computed } from "vue";
+import VueSVG from "@/components/VueSVG.vue";
 
 const t = usePageTranslation();
 const { isDesktop } = useBreakpoint();
@@ -35,10 +36,11 @@ useSEO({
   <main>
     <section class="s-hero reset">
       <div class="s-hero__content">
-        <h1>
+        <!-- <h1>
           {{ t("hero_title") }}
           <div class="line"></div>
-        </h1>
+        </h1> -->
+        <VueSVG src="/svg/rbossgroup.svg" className="s-hero__content__title" />
         <h2>{{ t("hero_text") }}</h2>
       </div>
       <div class="decor-gradient"></div>
@@ -99,7 +101,7 @@ useSEO({
     color: var(--text-tertiary);
     z-index: 3;
 
-    h1,
+    &__title,
     h2 {
       @apply px-20 md:px-60;
     }
@@ -109,16 +111,12 @@ useSEO({
       @apply 2xl:max-w-[1100px];
     }
 
-    h1 {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-
-      .line {
-        width: 15%;
-        height: 3px;
-        background-color: var(--text-tertiary);
-        @apply lg:w-[20%];
+    &__title {
+      max-width: 90vw;
+      width: 100%;
+      height: auto;
+      @media (max-width: 640px) {
+        margin-bottom: -4vw;
       }
     }
   }
